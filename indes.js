@@ -79,7 +79,7 @@ const displayCategoryDetails = (data) => {
                         </div>
                         <!-- rating -->
                         <div>
-                            <p class="font-medium">Ratings: <span class ="font-bold">${info.rating.number}</span></p>
+                            <p class="font-medium">Ratings: <span class ="font-bold">${info.rating.number}</span><sup class="ml-5 bg-pink-300 p-1 rounded-xl text-black font-semibold">${info.rating.badge}</sup></p>
                         </div>
                         <!-- button -->
                         <div>
