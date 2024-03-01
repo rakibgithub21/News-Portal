@@ -56,9 +56,25 @@
     <main class="container mx-auto  rounded-md">
         <section id="section-container">
             <div id="container_div" class="grid grid-cols-4 bg-white rounded-xl ">
-                
+
             </div>
         </section>
+
+        <!-- modal -->
+        <!-- Open the modal using ID.showModal() method -->
+
+        <dialog id="my_modal_2" class="modal">
+            <div class="modal-box space-y-4">
+                <h3 class="font-bold text-lg">Read Details...</h3>
+                <marquee class="bg-yellow-100 p-1" behavior="scroll" direction="">
+                    <p id="title" class=" font-bold  text-black"></p>
+                </marquee>
+                <p id="description" class="py-4 font-medium text-xl text-gray-700"></p>
+            </div>
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+        </dialog>
     </main>
 
     <!-- main container end -->

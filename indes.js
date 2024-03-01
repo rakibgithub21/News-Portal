@@ -12,7 +12,7 @@ const displayCategory = (datum) => {
     const buttonContainer = document.getElementById('button-container');
 
     datum.forEach(data => {
-        console.log(data);
+        // console.log(data);
         // console.log(data.category_name);
         const div = document.createElement('div');
         // div.classList = `flex justify-between my-10 text-[#858585]`;
@@ -81,7 +81,7 @@ const displayCategoryDetails = (data) => {
                         </div>
                         <!-- button -->
                         <div>
-                            <button class="btn-circle bg-slate-400 btn-outline"><i
+                            <button onclick="showFullDetails('${info._id}')" class="btn-circle bg-slate-400 btn-outline"><i
                                     class="fa-solid fa-arrow-right"></i></button>
                         </div>
                     </div>
@@ -98,6 +98,22 @@ const displayCategoryDetails = (data) => {
 
 const clickButtonHandler = (id) => {
     loadCategoryDetails(id)
+}
+
+// show details button
+const showFullDetails = async(id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${id}`
+    const res = await fetch(url);
+    const data = await res.json();
+    showModalData(data.data[0]);
+}
+
+const showModalData = (data) => {
+    console.log(data);
+    document.getElementById('title').innerText = `${data.title}`
+    document.getElementById('description').innerText = `${data.details}`
+
+    my_modal_2.showModal()
 }
 
 
