@@ -12,19 +12,16 @@ const displayCategory = (datum) => {
     const buttonContainer = document.getElementById('button-container');
 
     datum.forEach(data => {
-
+        console.log(data);
         // console.log(data.category_name);
         const div = document.createElement('div');
         // div.classList = `flex justify-between my-10 text-[#858585]`;
 
         div.innerHTML = `
-        <button>${data.category_name}</button>
+        <button onclick = "clickButtonHandler('${data.category_id}')">${data.category_name}</button>
         
         `
         buttonContainer.appendChild(div)
-
-
-
     });
 
 
@@ -32,8 +29,8 @@ const displayCategory = (datum) => {
 
 
 
-const loadCategoryDetails = async () => {
-    const url = `https://openapi.programming-hero.com/api/news/category/01`;
+const loadCategoryDetails = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayCategoryDetails(data.data);
@@ -44,8 +41,9 @@ const loadCategoryDetails = async () => {
 const displayCategoryDetails = (data) => {
     // console.log(data);
     const sectionContainer = document.getElementById('section-container');
+    sectionContainer.innerHTML = ``;
     data.forEach((info) => {
-        console.log(info);
+        // console.log(info);
         const div = document.createElement('div');
         div.classList = `grid grid-cols-4 bg-white rounded-xl border`;
         div.innerHTML = `
@@ -96,5 +94,12 @@ const displayCategoryDetails = (data) => {
 
 
 
+// click button handler
+
+const clickButtonHandler = (id) => {
+    loadCategoryDetails(id)
+}
+
+
 categoryDataLoad()
-loadCategoryDetails()
+loadCategoryDetails('01')
